@@ -1,7 +1,8 @@
 import pickle
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from ml.data import process_data
-# TODO: add necessary import
+from sklearn.ensemble import RandomForestClassifier
+# TODO: V1 add necessary import
 
 # Optional: implement hyperparameter tuning.
 def train_model(X_train, y_train):
@@ -19,8 +20,11 @@ def train_model(X_train, y_train):
     model
         Trained machine learning model.
     """
-    # TODO: implement the function
-    pass
+    # TODO: V1 implement the function
+    model = RandomForestClassifier()
+    model.fit(X_train, y_train)
+    return model
+    
 
 
 def compute_model_metrics(y, preds):
@@ -44,13 +48,13 @@ def compute_model_metrics(y, preds):
     recall = recall_score(y, preds, zero_division=1)
     return precision, recall, fbeta
 
-
+# FIXME Why are there Question marks in the model input description? Does this need changed?
 def inference(model, X):
     """ Run model inferences and return the predictions.
 
     Inputs
     ------
-    model : ???
+    model : ??? ###The trained machine learning model.###
         Trained machine learning model.
     X : np.array
         Data used for prediction.
@@ -59,8 +63,10 @@ def inference(model, X):
     preds : np.array
         Predictions from the model.
     """
-    # TODO: implement the function
-    pass
+    # TODO: V1 implement the function
+    preds = model.predict(X)  # Use the model to make predictions on test data
+    return preds
+    
 
 def save_model(model, path):
     """ Serializes model to a file.
@@ -72,13 +78,16 @@ def save_model(model, path):
     path : str
         Path to save pickle file.
     """
-    # TODO: implement the function
-    pass
+    # TODO: V1 implement the function
+    with open(path, 'wb') as f:
+        pickle.dump(model, f)
 
 def load_model(path):
     """ Loads pickle file from `path` and returns it."""
-    # TODO: implement the function
-    pass
+    # TODO: V1 implement the function
+    with open(path, 'rb') as file:
+        loaded_data = pickle.load(file)
+    return loaded_data    
 
 
 def performance_on_categorical_slice(
