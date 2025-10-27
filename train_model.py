@@ -2,6 +2,7 @@ import os
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import OneHotEncoder, LabelBinarizer
 
 from ml.data import process_data
 from ml.model import (
@@ -89,14 +90,23 @@ preds = inference(
 p, r, fb = compute_model_metrics(y_test, preds)
 print(f"Precision: {p:.4f} | Recall: {r:.4f} | F1: {fb:.4f}")
 
-# TODO: compute the performance on model slices using the performance_on_categorical_slice function
+# TODO: V1 compute the performance on model slices using the performance_on_categorical_slice function
 # iterate through the categorical features
 for col in cat_features:
     # iterate through the unique values in one categorical feature
     for slicevalue in sorted(test[col].unique()):
         count = test[test[col] == slicevalue].shape[0]
         p, r, fb = performance_on_categorical_slice(
-            # your code here
+            data, # FIXME: is this where test variable should be? Still need to sort that
+            col,
+            slicevalue,
+            cat_features,
+            y,
+            OneHotEncoder, # FIXME: Not sure how to pass this, or if it's needed to be passed at all
+            LabelBinarizer, # FIXME: Same as above, is this a required input or set as default?
+            model
+
+            # V1 your code here
             # use test, col and slicevalue as part of the input
         )
         with open("slice_output.txt", "a") as f:
