@@ -3,28 +3,28 @@ from train_model import data, train, p
 # TODO: V1 add necessary import
 
 @pytest.fixture(scope="session")
-def data():
+def test_ml_data():
     full_data = data # Load original dataset
     train_data = train  # Load training dataset
     model_accuracy = p # Load model accuracy
     return full_data, train_data, model_accuracy
 
 # TODO: V1 implement the second test. Change the function name and input as needed
-def test_split_columns(data):
+def test_split_columns(test_ml_data):
     """
     # Tests that columns contained in train data match original data frame.
     """
-    full_data, train_data, _ = data
+    full_data, train_data, _ = test_ml_data
 
     assert set(full_data.columns) == set(train_data.columns), \
         f"Original data and train data columns are not consistent"
     
 # TODO: V1 implement the second test. Change the function name and input as needed
-def test_split_ratio(data):
+def test_split_ratio(test_ml_data):
     """
     # Tests to determine if actual split ratio is the ratio expected from data split
     """
-    full_data, train_data, _ = data
+    full_data, train_data, _ = test_ml_data
     # Initialize expected ratio and tolerance
     expected_ratio = .20
     tolerance = .01
@@ -39,11 +39,11 @@ def test_split_ratio(data):
         f"Split ratio {actual_split_ratio:.2f} is not within the expected range of {expected_ratio - tolerance:.2f} to {expected_ratio + tolerance:.2f}"
 
 # TODO: V1 implement the third test. Change the function name and input as needed
-def test_model_accuracy():
+def test_model_accuracy(test_ml_data):
     """
     # Tests that model accuracy meets a minimum threshold
     """
-    _, _, actual_model_accuracy = data # Load actual model accuracy
+    _, _, actual_model_accuracy = test_ml_data # Load actual model accuracy
     accuracy_threshold = .70 # Set model accuracy threshold
     
     # Assert that model fails if actual model accuracy is below set accuracy threshold
@@ -52,4 +52,4 @@ def test_model_accuracy():
 
 
    
-    
+
