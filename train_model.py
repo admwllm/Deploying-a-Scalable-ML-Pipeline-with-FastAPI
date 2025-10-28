@@ -14,7 +14,7 @@ from ml.model import (
     train_model,
 )
 # TODO: V1 load the cencus.csv data
-project_path = "Deploying-a-Scalable-ML-Pipeline-with-FastAPI"
+project_path = os.getcwd()
 data_path = os.path.join(project_path, "data", "census.csv")
 print(data_path)
 data = pd.read_csv(data_path)
@@ -22,14 +22,9 @@ data = pd.read_csv(data_path)
 # TODO: V1 split the provided data to have a train dataset and a test dataset
 # Optional enhancement, use K-fold cross validation instead of a train-test split. 
 # Define target and features
-y = data["salary"]
-X = data.drop("salary", axis=1)
-
 # Split into train and test sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# FIXME, why does this call for only 2 sets when everything I've seen with splitting sets has 4?
-train, test = None, None# Your code here
+train, test = train_test_split(data, test_size=0.2, random_state=42)
 
 # DO NOT MODIFY
 cat_features = [
@@ -45,8 +40,9 @@ cat_features = [
 
 # TODO: V1 use the process_data function provided to process the data.
 X_train, y_train, encoder, lb = process_data(
-    X_train, 
-    y_train, 
+    train, 
+    cat_features, 
+    label="salary",
     training=True
     # your code here
     # use the train dataset 
@@ -60,7 +56,7 @@ X_test, y_test, _, _ = process_data(
     label="salary",
     training=False,
     encoder=encoder,
-    lb=lb,
+    lb=lb
 )
 
 # TODO: V1 use the train_model function to train the model on the training dataset
@@ -97,13 +93,13 @@ for col in cat_features:
     for slicevalue in sorted(test[col].unique()):
         count = test[test[col] == slicevalue].shape[0]
         p, r, fb = performance_on_categorical_slice(
-            data, # FIXME: is this where test variable should be? Still need to sort that
+            test, 
             col,
             slicevalue,
             cat_features,
-            y,
-            OneHotEncoder, # FIXME: Not sure how to pass this, or if it's needed to be passed at all
-            LabelBinarizer, # FIXME: Same as above, is this a required input or set as default?
+            "salary",
+            encoder, 
+            lb, 
             model
 
             # V1 your code here

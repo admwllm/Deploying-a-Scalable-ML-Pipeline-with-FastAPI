@@ -131,12 +131,9 @@ def performance_on_categorical_slice(
     # Create a data frame slice with only the specified slice_value data
     data_slice = data[data[column_name] == slice_value]
     # Separate the label and feature data in data slice
-    X = data_slice.drop([label], axis=1)
-    y = data_slice[label]
     # Process data slice
     X_slice, y_slice, _, _ = process_data(
-        X,
-        y, 
+        data_slice,
         categorical_features,
         label,
         training=False,
