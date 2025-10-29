@@ -1,6 +1,13 @@
 import pytest
-from train_model import data, train, p
+import os
+import pandas as pd
+from train_model import train, p
 # TODO: V1 add necessary import
+
+project_path = os.getcwd()
+data_path = os.path.join(project_path, "data", "census.csv")
+data = pd.read_csv(data_path)
+
 
 @pytest.fixture(scope="session")
 def test_ml_data():
