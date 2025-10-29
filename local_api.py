@@ -1,14 +1,15 @@
 import json
-
 import requests
+from fastapi import FastAPI
+from main import Data
 
-# TODO: send a GET using the URL http://127.0.0.1:8000
-r = None # Your code here
+# TODO: V1 send a GET using the URL http://127.0.0.1:8000
+r = requests.get("http://127.0.0.1:8000") # Your code here
 
-# TODO: print the status code
-# print()
-# TODO: print the welcome message
-# print()
+# TODO: V1 print the status code
+print("Status Code:", r.status_code)
+# TODO: V1 print the welcome message
+print("Response Body:", r.json())
 
 
 
@@ -29,10 +30,13 @@ data = {
     "native-country": "United-States",
 }
 
-# TODO: send a POST using the data above
-r = None # Your code here
+# TODO: V1 send a POST using the data above
 
-# TODO: print the status code
-# print()
-# TODO: print the result
-# print()
+url = "http://127.0.0.1:8000/data/"
+
+r = requests.post(url, json=data)   # Your code here
+
+# TODO: V1 print the status code
+print("Status Code:", r.status_code)
+# TODO: V1 print the result
+print("Response Body:", r.json())
