@@ -49,6 +49,7 @@ def test_split_ratio(test_ml_data):
         f"Split ratio {actual_split_ratio:.2f} is not within the expected range of {expected_ratio - tolerance:.2f} to {expected_ratio + tolerance:.2f}"
 """
 # TODO: V1 implement the third test. Change the function name and input as needed
+@pytest.fixture(scope="session")
 def test_model_accuracy(test_ml_data):
     """
     # Tests that model accuracy meets a minimum threshold
