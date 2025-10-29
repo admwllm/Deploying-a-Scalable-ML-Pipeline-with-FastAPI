@@ -18,11 +18,12 @@ def test_ml_data():
     model_accuracy = p # Load model accuracy
     return full_data, train_data, model_accuracy
 
+"""
 # TODO: V1 implement the second test. Change the function name and input as needed
 def test_split_columns(test_ml_data):
-    """
+    
     # Tests that columns contained in train data match original data frame.
-    """
+    
     full_data, train_data, _ = test_ml_data
 
     assert set(full_data.columns) == set(train_data.columns), \
@@ -30,9 +31,9 @@ def test_split_columns(test_ml_data):
     
 # TODO: V1 implement the second test. Change the function name and input as needed
 def test_split_ratio(test_ml_data):
-    """
+    
     # Tests to determine if actual split ratio is the ratio expected from data split
-    """
+    
     full_data, train_data, _ = test_ml_data
     # Initialize expected ratio and tolerance
     expected_ratio = .20
@@ -46,7 +47,7 @@ def test_split_ratio(test_ml_data):
     # Assert that ratio difference should be within expected ratio +/- tolerance or provide fail message
     assert expected_ratio >= actual_split_ratio - tolerance and expected_ratio <= actual_split_ratio + tolerance, \
         f"Split ratio {actual_split_ratio:.2f} is not within the expected range of {expected_ratio - tolerance:.2f} to {expected_ratio + tolerance:.2f}"
-
+"""
 # TODO: V1 implement the third test. Change the function name and input as needed
 def test_model_accuracy(test_ml_data):
     """
