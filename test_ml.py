@@ -3,7 +3,7 @@ import os
 import pandas as pd
 from train_model import train, p
 # TODO: V1 add necessary import
-
+"""
 project_path = os.getcwd()
 data_path = os.path.join(project_path, "data", "census.csv")
 print(data_path, project_path)
@@ -18,7 +18,7 @@ def test_ml_data():
     model_accuracy = p # Load model accuracy
     return full_data, train_data, model_accuracy
 
-"""
+
 # TODO: V1 implement the second test. Change the function name and input as needed
 def test_split_columns(test_ml_data):
     
