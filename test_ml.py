@@ -6,7 +6,9 @@ from train_model import train, p
 
 project_path = os.getcwd()
 data_path = os.path.join(project_path, "data", "census.csv")
+print(data_path, project_path)
 data = pd.read_csv(data_path)
+
 
 
 @pytest.fixture(scope="session")
