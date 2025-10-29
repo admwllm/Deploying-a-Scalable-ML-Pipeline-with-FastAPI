@@ -47,20 +47,20 @@ def test_split_ratio(test_ml_data):
     # Assert that ratio difference should be within expected ratio +/- tolerance or provide fail message
     assert expected_ratio >= actual_split_ratio - tolerance and expected_ratio <= actual_split_ratio + tolerance, \
         f"Split ratio {actual_split_ratio:.2f} is not within the expected range of {expected_ratio - tolerance:.2f} to {expected_ratio + tolerance:.2f}"
-"""
+
 # TODO: V1 implement the third test. Change the function name and input as needed
 @pytest.fixture(scope="session")
 def test_model_accuracy(test_ml_data):
-    """
+    
     # Tests that model accuracy meets a minimum threshold
-    """
+    
     _, _, actual_model_accuracy = test_ml_data # Load actual model accuracy
     accuracy_threshold = .70 # Set model accuracy threshold
     
     # Assert that model fails if actual model accuracy is below set accuracy threshold
     assert actual_model_accuracy >= accuracy_threshold, \
         f"Actual model accuracy of {actual_model_accuracy:.2f} below threshold of {accuracy_threshold:.2f}."
-
+"""
 
    
 
