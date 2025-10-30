@@ -29,4 +29,4 @@ jobs:
     - name: Test with pytest
       run: |
         pytest test_ml.py -v
-      working-directory: ./home/runner/work/Deploying-a-Scalable-ML-Pipeline-with-FastAPI
+      
