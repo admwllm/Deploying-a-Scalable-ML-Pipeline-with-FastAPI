@@ -6,14 +6,15 @@ import pandas as pd
 # TODO: V1 add necessary import
 
 project_path = os.getcwd()
-data_path = os.path.join(project_path, "data", "census.csv")
-train_path = os.path.join(project_path, "data", "trainingdata.csv")
-precision_path = os.path.join(project_path, "data", "model_precision.npy")
+#data_path = os.path.join(project_path, "data", "census.csv")
+data_path = os.path.join("data", "census.csv")
+#train_path = os.path.join(project_path, "data", "trainingdata.csv")
+train_path = os.path.join("data", "trainingdata.csv")
+#precision_path = os.path.join(project_path, "data", "model_precision.npy")
+precision_path = os.path.join("data", "model_precision.npy")
 data = pd.read_csv(data_path)
 train = pd.read_csv(train_path)
 p = np.load(precision_path)
-
-
 
 @pytest.fixture(scope="session")
 def test_ml_data():
