@@ -16,13 +16,6 @@ data = pd.read_csv(data_path)
 train = pd.read_csv(train_path)
 p = np.load(precision_path)
 
-print("Current Working Directory:", project_path)
-print("Data Path:", data_path)
-print("Current Working Directory:", project_path)
-print("Train Path:", train_path)
-print("Current Working Directory:", project_path)
-print("Precision Path:", precision_path)
-print("Current Working Directory:", project_path)
 
 @pytest.fixture(scope="session")
 def test_ml_data():
