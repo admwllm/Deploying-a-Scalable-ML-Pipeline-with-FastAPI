@@ -2,8 +2,6 @@ import os
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import OneHotEncoder, LabelBinarizer
-
 from ml.data import process_data
 from ml.model import (
     compute_model_metrics,
@@ -13,7 +11,7 @@ from ml.model import (
     save_model,
     train_model,
 )
-# TODO: V1 load the cencus.csv data
+# Load the cencus.csv data
 project_path = os.getcwd()
 data_path = os.path.join(project_path, "data", "census.csv")
 print(data_path)
@@ -110,5 +108,9 @@ for col in cat_features:
         with open("slice_output.txt", "a") as f:
             print(f"{col}: {slicevalue}, Count: {count:,}", file=f)
             print(f"Precision: {p:.4f} | Recall: {r:.4f} | F1: {fb:.4f}", file=f)
+        # Save precision value for test file    
+        np.save("data/model_precision.npy", p)
 
-np.save("data/model_precision.npy", p)
+
+
+

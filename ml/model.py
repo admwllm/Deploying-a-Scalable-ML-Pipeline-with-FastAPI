@@ -2,8 +2,6 @@ import pickle
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from ml.data import process_data
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.preprocessing import OneHotEncoder, LabelBinarizer
-# TODO: V1 add necessary import. Do I need OneHotEncoder and LabelBinarizer here if importing them in function call?
 
 # Optional: implement hyperparameter tuning.
 def train_model(X_train, y_train):
@@ -55,7 +53,7 @@ def inference(model, X):
 
     Inputs
     ------
-    model : ??? ###The trained machine learning model.###
+    model : RandomForestClassifier
         Trained machine learning model.
     X : np.array
         Data used for prediction.

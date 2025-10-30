@@ -2,7 +2,7 @@ import pytest
 import os
 import numpy as np
 import pandas as pd
-#from train_model import train, p
+#from train_model import data,train, p
 # TODO: V1 add necessary import
 
 project_path = os.getcwd()
