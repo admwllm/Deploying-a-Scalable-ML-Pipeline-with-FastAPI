@@ -6,15 +6,23 @@ import pandas as pd
 # TODO: V1 add necessary import
 
 project_path = os.getcwd()
-#data_path = os.path.join(project_path, "data", "census.csv")
-data_path = os.path.join("data", "census.csv")
-#train_path = os.path.join(project_path, "data", "trainingdata.csv")
-train_path = os.path.join("data", "trainingdata.csv")
-#precision_path = os.path.join(project_path, "data", "model_precision.npy")
-precision_path = os.path.join("data", "model_precision.npy")
+data_path = os.path.join(project_path, "data", "census.csv")
+#data_path = os.path.join("data", "census.csv")
+train_path = os.path.join(project_path, "data", "trainingdata.csv")
+#train_path = os.path.join("data", "trainingdata.csv")
+precision_path = os.path.join(project_path, "data", "model_precision.npy")
+#precision_path = os.path.join("data", "model_precision.npy")
 data = pd.read_csv(data_path)
 train = pd.read_csv(train_path)
 p = np.load(precision_path)
+
+print("Current Working Directory:", project_path)
+print("Data Path:", data_path)
+print("Current Working Directory:", project_path)
+print("Train Path:", train_path)
+print("Current Working Directory:", project_path)
+print("Precision Path:", precision_path)
+print("Current Working Directory:", project_path)
 
 @pytest.fixture(scope="session")
 def test_ml_data():
