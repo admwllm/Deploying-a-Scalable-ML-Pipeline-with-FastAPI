@@ -1,13 +1,17 @@
 import pytest
 import os
+import numpy as np
 import pandas as pd
-from train_model import train, p
+#from train_model import train, p
 # TODO: V1 add necessary import
-"""
+
 project_path = os.getcwd()
 data_path = os.path.join(project_path, "data", "census.csv")
-print(data_path, project_path)
+train_path = os.path.join(project_path, "data", "trainingdata.csv")
+precision_path = os.path.join(project_path, "data", "model_precision.npy")
 data = pd.read_csv(data_path)
+train = pd.read_csv(train_path)
+p = np.load(precision_path)
 
 
 
@@ -21,9 +25,9 @@ def test_ml_data():
 
 # TODO: V1 implement the second test. Change the function name and input as needed
 def test_split_columns(test_ml_data):
-    
+    """
     # Tests that columns contained in train data match original data frame.
-    
+    """
     full_data, train_data, _ = test_ml_data
 
     assert set(full_data.columns) == set(train_data.columns), \
@@ -31,9 +35,9 @@ def test_split_columns(test_ml_data):
     
 # TODO: V1 implement the second test. Change the function name and input as needed
 def test_split_ratio(test_ml_data):
-    
+    """
     # Tests to determine if actual split ratio is the ratio expected from data split
-    
+    """
     full_data, train_data, _ = test_ml_data
     # Initialize expected ratio and tolerance
     expected_ratio = .20
@@ -49,18 +53,18 @@ def test_split_ratio(test_ml_data):
         f"Split ratio {actual_split_ratio:.2f} is not within the expected range of {expected_ratio - tolerance:.2f} to {expected_ratio + tolerance:.2f}"
 
 # TODO: V1 implement the third test. Change the function name and input as needed
-@pytest.fixture(scope="session")
+
 def test_model_accuracy(test_ml_data):
-    
+    """
     # Tests that model accuracy meets a minimum threshold
-    
+    """
     _, _, actual_model_accuracy = test_ml_data # Load actual model accuracy
     accuracy_threshold = .70 # Set model accuracy threshold
     
     # Assert that model fails if actual model accuracy is below set accuracy threshold
     assert actual_model_accuracy >= accuracy_threshold, \
         f"Actual model accuracy of {actual_model_accuracy:.2f} below threshold of {accuracy_threshold:.2f}."
-"""
+
 
    
 

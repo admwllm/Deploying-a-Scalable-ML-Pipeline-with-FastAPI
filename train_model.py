@@ -1,5 +1,5 @@
 import os
-
+import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder, LabelBinarizer
@@ -25,6 +25,8 @@ data = pd.read_csv(data_path)
 # Split into train and test sets
 
 train, test = train_test_split(data, test_size=0.2, random_state=42)
+
+train.to_csv("data/trainingdata.csv", index=False)
 
 # DO NOT MODIFY
 cat_features = [
@@ -108,3 +110,5 @@ for col in cat_features:
         with open("slice_output.txt", "a") as f:
             print(f"{col}: {slicevalue}, Count: {count:,}", file=f)
             print(f"Precision: {p:.4f} | Recall: {r:.4f} | F1: {fb:.4f}", file=f)
+
+np.save("data/model_precision.npy", p)
