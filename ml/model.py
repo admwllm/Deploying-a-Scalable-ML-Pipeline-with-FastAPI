@@ -3,7 +3,7 @@ from sklearn.metrics import fbeta_score, precision_score, recall_score
 from ml.data import process_data
 from sklearn.ensemble import RandomForestClassifier
 
-# Optional: implement hyperparameter tuning.
+# Define the train_model function
 def train_model(X_train, y_train):
     """
     Trains a machine learning model and returns it.
@@ -19,13 +19,12 @@ def train_model(X_train, y_train):
     model
         Trained machine learning model.
     """
-    # TODO: V1 implement the function
+    # Implement the function
     model = RandomForestClassifier()
     model.fit(X_train, y_train)
     return model
     
-
-
+# Define the compute_model_metrics function
 def compute_model_metrics(y, preds):
     """
     Validates the trained machine learning model using precision, recall, and F1.
@@ -47,7 +46,7 @@ def compute_model_metrics(y, preds):
     recall = recall_score(y, preds, zero_division=1)
     return precision, recall, fbeta
 
-# FIXME Why are there Question marks in the model input description? Does this need changed?
+# Define the inference function
 def inference(model, X):
     """ Run model inferences and return the predictions.
 
@@ -62,11 +61,11 @@ def inference(model, X):
     preds : np.array
         Predictions from the model.
     """
-    # TODO: V1 implement the function
+    # Implement the function
     preds = model.predict(X)  # Use the model to make predictions on test data
     return preds
     
-
+# Define the save_model function
 def save_model(model, path):
     """ Serializes model to a file.
 
@@ -77,18 +76,19 @@ def save_model(model, path):
     path : str
         Path to save pickle file.
     """
-    # TODO: V1 implement the function
+    # Implement the function
     with open(path, 'wb') as f:
         pickle.dump(model, f)
 
+# Define the load_model function
 def load_model(path):
     """ Loads pickle file from `path` and returns it."""
-    # TODO: V1 implement the function
+    # Implement the function
     with open(path, 'rb') as file:
         loaded_data = pickle.load(file)
     return loaded_data    
 
-
+# Define the performance_on_categorical_slice function
 def performance_on_categorical_slice(
     data, column_name, slice_value, categorical_features, label, encoder, lb, model
 ):
@@ -115,7 +115,8 @@ def performance_on_categorical_slice(
         Trained sklearn OneHotEncoder, only used if training=False.
     lb : sklearn.preprocessing._label.LabelBinarizer
         Trained sklearn LabelBinarizer, only used if training=False.
-    model : ???
+    model : RandomForestClassifier
+        Trained machine learning
         Model used for the task.
 
     Returns
@@ -125,7 +126,7 @@ def performance_on_categorical_slice(
     fbeta : float
 
     """
-    # TODO: V1 implement the function
+    
     # Create a data frame slice with only the specified slice_value data
     data_slice = data[data[column_name] == slice_value]
     # Separate the label and feature data in data slice
@@ -137,11 +138,8 @@ def performance_on_categorical_slice(
         training=False,
         encoder=encoder,
         lb=lb
-        # your code here
-        # for input data, use data in column given as "column_name", with the slice_value 
-        # use training = False
     )
     # Get prediction on x_slice using inference function
-    preds = model.predict(X_slice)  # TODO V1 your code here to get prediction on X_slice using the inference function
+    preds = model.predict(X_slice)  # Get prediction on X_slice using the inference function
     precision, recall, fbeta = compute_model_metrics(y_slice, preds)
     return precision, recall, fbeta
